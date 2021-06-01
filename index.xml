@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>junghyun397 Blog</title>
+    <link>/</link>
+    <description>Recent content on junghyun397 Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <copyright>©2020 junghyun397.</copyright>
+    <lastBuildDate>Fri, 26 Mar 2021 15:27:32 +0900</lastBuildDate>
+    
+        <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Posts</title>
+      <link>/post/</link>
+      <pubDate>Fri, 26 Mar 2021 15:27:32 +0900</pubDate>
+      
+      <guid>/post/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Sat, 29 Feb 2020 00:37:08 +0900</pubDate>
+      
+      <guid>/about/</guid>
+      <description>junghyun397 블로그, do1ph.in 필요할 때 필요한 것들을 활용해 보다 가치 있는 문제를 해결하기를 원합니다. 주로 강화학습, 알고리즘, DevOps, 보안 등을 다룹니다. 사실 잡스러운 글이 더 많</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>devops on junghyun397 Blog</title>
+    <link>/categories/devops/</link>
+    <description>Recent content in devops on junghyun397 Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <copyright>©2020 junghyun397.</copyright>
+    <lastBuildDate>Fri, 26 Mar 2021 15:27:32 +0900</lastBuildDate>
+    
+        <atom:link href="/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Github Actions로 Flutter 앱 빌드하기</title>
+      <link>/post/flutter-action/</link>
+      <pubDate>Fri, 26 Mar 2021 15:27:32 +0900</pubDate>
+      
+      <guid>/post/flutter-action/</guid>
+      <description>요즘 Github Actions 가 그렇게 맛집이라고 하더군요! 그래서 해 봤습니다: Github Actions 로 Flutter 앱 빌드하기. 이 글에서는 Github Actions에서 Flutter 앱을 Android APK 또는 AppBundle 로 빌드하는 방법을 소개</description>
+    </item>
+    
+  </channel>
+</rss>

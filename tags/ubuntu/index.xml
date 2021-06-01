@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ubuntu on junghyun397 Blog</title>
+    <link>/tags/ubuntu/</link>
+    <description>Recent content in ubuntu on junghyun397 Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <copyright>©2020 junghyun397.</copyright>
+    <lastBuildDate>Sat, 25 Apr 2020 19:00:00 +0900</lastBuildDate>
+    
+        <atom:link href="/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ubuntu 20.04 LTS 설치 후 작업환경 구성하기</title>
+      <link>/post/setup-ubuntu-20-04-lts/</link>
+      <pubDate>Sat, 25 Apr 2020 19:00:00 +0900</pubDate>
+      
+      <guid>/post/setup-ubuntu-20-04-lts/</guid>
+      <description>우분투 20.04 장기 지원 버전(LTS) 이 릴리스 되었습니다. 매번 OS를 새로 설치할 때마다 삽질하지 않도록 우분투를 처음 설치했을 때 작업 환경을 세팅하는 과정을 글로</description>
+    </item>
+    
+  </channel>
+</rss>

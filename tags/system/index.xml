@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>system on junghyun397 Blog</title>
+    <link>/tags/system/</link>
+    <description>Recent content in system on junghyun397 Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <copyright>©2020 junghyun397.</copyright>
+    <lastBuildDate>Thu, 13 Aug 2020 12:21:07 +0900</lastBuildDate>
+    
+        <atom:link href="/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>리눅스에서 liquidctl로 수냉쿨러 컨트롤 하기</title>
+      <link>/post/control-aio-in-linux/</link>
+      <pubDate>Thu, 13 Aug 2020 12:21:07 +0900</pubDate>
+      
+      <guid>/post/control-aio-in-linux/</guid>
+      <description>우선 전 Corsair 사의 일체형 쿨러인 H100i v2를 4년간 사용하고 있었습니다. 우분투 18.04를 사용할 때는 윈도우에서 작동하는 CorsairLink에서 설정한 값이</description>
+    </item>
+    
+  </channel>
+</rss>

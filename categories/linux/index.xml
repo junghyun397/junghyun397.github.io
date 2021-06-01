@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on junghyun397 Blog</title>
+    <link>/categories/linux/</link>
+    <description>Recent content in linux on junghyun397 Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <copyright>©2020 junghyun397.</copyright>
+    <lastBuildDate>Thu, 13 Aug 2020 12:21:07 +0900</lastBuildDate>
+    
+        <atom:link href="/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>리눅스에서 liquidctl로 수냉쿨러 컨트롤 하기</title>
+      <link>/post/control-aio-in-linux/</link>
+      <pubDate>Thu, 13 Aug 2020 12:21:07 +0900</pubDate>
+      
+      <guid>/post/control-aio-in-linux/</guid>
+      <description>우선 전 Corsair 사의 일체형 쿨러인 H100i v2를 4년간 사용하고 있었습니다. 우분투 18.04를 사용할 때는 윈도우에서 작동하는 CorsairLink에서 설정한 값이</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 20.04 LTS 설치 후 작업환경 구성하기</title>
+      <link>/post/setup-ubuntu-20-04-lts/</link>
+      <pubDate>Sat, 25 Apr 2020 19:00:00 +0900</pubDate>
+      
+      <guid>/post/setup-ubuntu-20-04-lts/</guid>
+      <description>우분투 20.04 장기 지원 버전(LTS) 이 릴리스 되었습니다. 매번 OS를 새로 설치할 때마다 삽질하지 않도록 우분투를 처음 설치했을 때 작업 환경을 세팅하는 과정을 글로</description>
+    </item>
+    
+  </channel>
+</rss>

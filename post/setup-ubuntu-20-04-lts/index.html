@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.83.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Ubuntu 20.04 LTS 설치 후 작업환경 구성하기&nbsp;&ndash;&nbsp;junghyun397 Blog</title><link rel="stylesheet" href="/css/core.min.ea1400697569fa7a19556ca3b8ebbb5028f70c37ea64f43ca659487a16324f3512382b45e444e412e7ce21dfc0082606.css" integrity="sha384-6hQAaXVp&#43;noZVWyjuOu7UCj3DDfqZPQ8pllIehYyTzUSOCtF5ETkEufOId/ACCYG"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<body>
+    <div class="base-body"><section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">junghyun397 Blog</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Categories</a><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/about">About</a><a class="nav item" href="https://github.com/junghyun397"target="_blank">Github</a></nav></div></span></div><div class="site slogan"><span class="title">Maybe JeongHyeon Choi's blog.</span></div></section><div id="content"><section class="article header">
+    <h1 class="article title">Ubuntu 20.04 LTS 설치 후 작업환경 구성하기</h1><p class="article date">2020-04-25</p></section><article class="article markdown-body"><p><code>우분투 20.04 장기 지원 버전(LTS)</code> 이 릴리스 되었습니다. 매번 OS를 새로 설치할 때마다 삽질하지 않도록 우분투를 처음 설치했을 때 작업 환경을 세팅하는 과정을 글로 정리해 봤습니다. <code>Pop! shell</code> 및 <code>ifcitx-hangul</code> 설정과 <code>uim-byeoru</code> 설정, <code>oh-my-zsh</code> 설정과 <code>vundle</code> 등의 설정을 포함합니다.</p>
+<ul>
+<li>개인적으로 사용하기 위해 정리한 성격이 강한 글입니다.</li>
+<li>최소한 <code>22.04 LTS</code>가 나오기 전까지는 계속 업데이트 될 예정입니다.</li>
+<li><code>Ubuntu 20.04 LTS</code>, 영문 기준으로 작성되었으며, <code>RYZEN 1700 + GTX1080 + NVMe SSD </code> 데스크톱과 <code>DELL XPS 13 9350</code> 랩톱 하드웨어에서 정상 작동을 확인했습니다.</li>
+</ul>
+<p>본격적으로 환경을 구성하기 전에,  여러 가지 도구들을 설치해 줘야 합니다. 취향껏 골라 설치하면 되겠습니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt update <span style="color:#666">&amp;&amp;</span> sudo apt upgrade
+
+<span style="color:#408080;font-style:italic"># 빌드 도구</span>
+sudo apt install build-essential make cmake clang node-typescript libdbus-1-dev libssl-dev
+
+<span style="color:#408080;font-style:italic"># 설치 도구</span>
+sudo apt install cargo gdebi python3-pip ppa-purge
+
+<span style="color:#408080;font-style:italic"># 관리 도구</span>
+sudo apt install openssh-server git curl screen net-tools pm-utils
+
+<span style="color:#408080;font-style:italic"># 모니터링 도구</span>
+sudo apt install tldr screenfetch htop tree
+
+<span style="color:#408080;font-style:italic"># GNOME 추가 기능</span>
+sudo apt install gnome-tweak-tool gnome-shell-extensions nitrogen
+
+<span style="color:#408080;font-style:italic"># 편집기 및 입력기</span>
+sudo apt install vim uim uim-byeoru
+</code></pre></div><h2 id="zsh-shell">Zsh Shell</h2>
+<p><code>zsh</code> 를 설치하고 기본 쉘을 <code>zsh</code> 로 변경합니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt install zsh
+chsh -s /usr/bin/zsh
+</code></pre></div><p>로그아웃 이후 로그인하면 기본 쉘이 <code>zsh</code> 로 바뀐 것을 확인할 수 있습니다. 이제 zsh의 사용성을 개선해 줄 <code>oh my zsh</code> 를 설치할 수 있습니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
+</code></pre></div><p><strong>zsh-syntax-highlighting</strong>: <code>Fish shell</code> 과 비슷한 방식으로 <code>zsh</code> 에서 타이핑한 명령어를 자동으로 하이라이팅 해 주는 플러그인입니다. <code>oh-my-zsh</code> 커스텀 폴더에 플러그인 저장소를 clone해줍니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span style="color:#b68;font-weight:bold">${</span><span style="color:#19177c">ZSH_CUSTOM</span><span style="color:#008000;font-weight:bold">:-</span>~/.oh-my-zsh/custom<span style="color:#b68;font-weight:bold">}</span>/plugins/zsh-syntax-highlighting
+</code></pre></div><p>이후 <code>~/.zshrc</code>에서 <code>ZSH_THEME=&quot;agnoster&quot; </code>와 <code>plugins=(git zsh-syntax-highlighting)</code>을 설정한 뒤, <code>source ~/.zshrc</code>를 입력해 적용합니다.</p>
+<h2 id="gnome-shell">GNOME Shell</h2>
+<p>GNOME Shell을 완전히 설정하기 위해, <code>Tweaks</code> 앱에서 다음 설정들을 변경해야 합니다.</p>
+<ol>
+<li><code>Keyboard &amp; Mouse</code> 에서 다음 설정을 변경해야 합니다.
+<ol>
+<li>Control &lt;-&gt; CapsLock 위치 변경: CapsLock 키의 위치는 적폐입니다. 그리 좋은 자리가 Control이 아니라 잘 쓰지도 않는 Caps키라니요. <code>tweaks</code> &gt; <code>Keyboard&amp;Mouse</code> &gt; <code>Keyboard</code> &gt; <code>Additional Layout Options</code> &gt; <code>Ctrl position</code> &gt; <code>Swap Ctrl and Cpas Lock</code> 을 활성화하여 청산합니다.</li>
+<li>Compose Key 지정: 한글 키 또는 멀티 키가 포함되지 않는 키보드를 사용하고 있다면, 한글-영문 전환 키로 활용할 <code>Compose Key</code> 를 지정해야 합니다. 일반적으로 <code>Alt_R</code> 을 사용합니다.</li>
+</ol>
+</li>
+<li><code>Workspaces</code> 에서 다음 설정을 변경해야 합니다.
+<ol>
+<li>정적 워크스페이스 설정: <code>Static workspaces</code> 를 선택해 정적 워크스페이스를 활성화합니다.</li>
+</ol>
+</li>
+</ol>
+<h3 id="shell-extension">Shell Extension</h3>
+<p>GNOME Shell에 추가 기능을 설치하고 추가 기능을 구성하기 위해, <code>Shell Extension</code> 을 설치하고 <code>Extensions</code> 앱을 이용해 추가 기능을 구성할 수 있습니다.</p>
+<p>기본으로 제공되는 추가기능들을 비활성화/활성화 하기 위해 <code>Extensions</code> 앱에서 추가 기능 활성화를 설정해야 합니다.</p>
+<ol>
+<li>앱 메뉴를 비활성화하기 위해 <code>Applications Menu</code> 를 <code>disable</code> 로 설정합니다.</li>
+<li>바탕화면 아이콘을 비활성화하기 위해 <code>Desktop-icons</code> 을 <code>disable</code> 로 설정합니다.</li>
+<li>Ubuntu Dock를 비활성화하기 위해 <code>Ubuntu Dock</code> 을 <code>disable</code> 로 설정합니다.</li>
+<li>워크스페이스 표시기를 활성화하기 위해 <code>Workspace Indicator</code> 를 <code>enable</code> 로 설정합니다.</li>
+</ol>
+<p>이후, 다음 <code>Shell Extension</code>들을 웹 페이지에서 활성화 클릭 또는 컴파일하여 설치합니다.</p>
+<h4 id="pop-shell">Pop! Shell</h4>
+<p>키보드 활용도를 더욱 높여주며, <code>i3wm</code> 과 비슷한 타일링을 가능하게 만들어 주는 Extension인 <code>Pop! Shell</code>입니다. 자세한 설명은 <a href="https://github.com/pop-os/shell"target="_blank">이 링크</a>를 참조해 주세요. <code>Pop! Shell</code> github 저장소를 클론한 뒤 컴파일 및 설치합니다. <strong>설치 시 단축키들이 변경됨으로, 주의해서 설치해주세요.</strong></p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#008000">cd</span> /tmp
+git clone https://github.com/pop-os/shell
+<span style="color:#008000">cd</span> shell
+make local-install
+</code></pre></div><h4 id="gsconnect">GSConnect</h4>
+<p><a href="https://extensions.gnome.org/extension/1319/gsconnect/">https://extensions.gnome.org/extension/1319/gsconnect/</a> 에서 활성화할 수 있습니다.</p>
+<p>KDE의 모바일 기기 연결 서비스인 <code>KDE Connect</code> 의 JavaScript 구현 버전입니다. 배터리 및 알림, 클립보드 동기화와 파일시스템 마운트 기능을 지원합니다.</p>
+<h4 id="unite">Unite</h4>
+<p><a href="https://extensions.gnome.org/extension/1287/unite/">https://extensions.gnome.org/extension/1287/unite/</a>  에서 활성화할 수 있습니다.</p>
+<p>타이틀 바 제거, 앱 메뉴 제거, 윈도우 버튼 위치 변경 등 GNOME 의 여러 요소를 커스터마이징 할 수 있는 확장 앱입니다.</p>
+<ol>
+<li>Activites 영역을 비활성화하기 위해 <code>Hide activities button</code> 을 <code>always</code> 로 설정합니다.</li>
+<li>타이틀 바를 숨기기 위해 <code>Hide Window titlebars</code> 을 <code>always</code> 로 설정합니다.</li>
+<li>윈도우 타이틀을 앱 메뉴에 표시하기 위해 <code>Show window title in app menu</code> 을 <code>always</code> 로 설정합니다.</li>
+<li>윈도우 버튼을 상단 바에 표시하기 위해 <code>Show window buttons in top bar</code> 을 <code>always</code> 로 설정합니다.</li>
+<li>상단 바에 표시된 윈도우 버튼의 위치를 설정하기 위해 <code>Top bar window buttons position</code> 을 <code>First</code> 로 설정합니다.</li>
+<li>상단 바에 표시된 윈도우 버튼의 테마를 설정하기 위해 <code>Top bar window buttons theme</code> 을 <code>Prof-Gnome</code> 로 설정합니다.</li>
+</ol>
+<p><strong>Title bar 제거</strong>: GNOME-Terminal 은 Unite 의 Title bar 제거 옵션이 먹히지 않습니다. gsetting을 이용해 수동으로 타이틀 바를 제거합니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">gsettings <span style="color:#008000">set</span> org.gnome.Terminal.Legacy.Settings headerbar <span style="color:#008000">false</span>
+</code></pre></div><h4 id="block-caribou">Block-Caribou</h4>
+<p><a href="https://extensions.gnome.org/extension/3222/block-caribou-36/">https://extensions.gnome.org/extension/3222/block-caribou-36/</a> 에서 활성화할 수 있습니다.</p>
+<p>터치스크린 환경에서 가상 키보드 비활성화 기능이 작동하지 않는 버그를 해결 해줍니다. 가상 키보드 관련 문제가 있다면 설치하면 됩니다.</p>
+<h2 id="hangul-input">한글 입력</h2>
+<p>한국인 우분투 사용자의 최대 난제, 한글 입력 문제입니다. 보통 <code>fcitx-hangul</code>, <code>uim-byeory</code>, <code>ibus-hangul</code> 을 많이 사용하는데, 여기서는 현시점에서 가장 쓸만 하다고 판단되는 <code>fcitx-gangul</code> 과 <code>uim-byeoru</code> 설치법만을 소개하겠습니다.</p>
+<p><strong>fcitx-hangul</strong>: 맞습니다. 악명이 자자한 가장 유명한 한글 입력기, <code>fcitx</code> 입니다. 예전보다 악명은 많이 줄었지만, 아직은 <strong>크롬에서 사용 시 심각한 수준으로 불안정</strong>한 모습을 보여 줍니다. 영 내키지는 않아도 <code>fcitx</code> 를 설치해 놓을 이유는 있습니다. <strong>snap으로 설치한 앱에서는 uim을 이용한 한글 입력이 불가능</strong>합니다. 꼭 snap으로 설치한 앱에서 한글을 적어야 한다면, fcitx도 따로 설치해 두시기를 권장 드립니다. 우선 <code>fcitx-hangul</code> 을 설치합니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt install fcitx-hangul
+</code></pre></div><p><code>Setting</code> &gt; <code>Region &amp; Language</code> &gt; <code>Manage installed Language</code> &gt; <code>Keyboard input method system</code> &gt; <code>fcitx</code> 을 선택해 <code>fcitx-hangul</code> 을 적용한 이후 <code>Region &amp; Language</code> 로 다시 돌아가, <code>+</code> 버튼을 눌러 <code>Korean(Hangul)</code> 을 찾아 적용합니다.</p>
+<p><code>Korean(Hangul)</code> 을 적용했다면, 우측 상단에 보이는 <code>EN</code> 아이콘을 누른 뒤, <code>setup</code> 을 선택해 <code>Hangul</code> 과 <code>Shift+Space</code> 를 지우고 오른쪽 Alt를 눌러 <code>Alt_R</code> 을 인식시키면 이제 오른쪽 Alt키를 이용해 한글-영문을 전환할 수 있습니다.</p>
+<p><strong>uim-byeoru</strong>: <strong>그나마</strong> 안정적인 한글 입력기입니다. 한글이 아예 적히지 않는 경우가 적지 않지만, 깨져서 나온다거나 글자가 증발한다던가 하는 불안정한 동작은 확실히 <code>fcitx</code> 에 비해 덜합니다.</p>
+<ol>
+<li><code>Language Support</code> &gt; <code>Keyboard input method system</code> &gt; <code>uim</code> 을 선택해 적용합니다.</li>
+<li><code>uim</code> 에 진입하면 <code>uim-pref-gtk</code> UI 가 나옵니다. 여기서 <code>Specify defuault IM</code> 을 활성화한 뒤, <code>Default Input Method</code> 를 <code>Byeoru</code> 로 설정합니다.</li>
+<li>좌측 메뉴에서 <code>Byeoru key binding 1</code> 을 선택해 <code>[Byeoru] on</code> 과 <code>[Byeoru] off</code> 에 <code>Multi_key</code> 를 인식시켜야 합니다. <code>Grab...</code> 을 눌렀을 때, <code>Alt_key</code> 가 잡힌다면 4번을 거쳐야 합니다. 정상적으로 <code>Multi_key</code> 가 인식된다면 5번으로 넘어 갑니다.</li>
+<li><code>Tweaks</code> &gt; <code>Keyboard &amp; Mouse</code> &gt; <code>Compose Key</code> 를 활성화해 <code>Right Alt</code> 를 선택해줍니다. 다시 3번으로 돌아가 오른쪽 Alt를 눌러 주면 <code>Multi_key</code> 로 인식이 될 것입니다.</li>
+<li><code>Multi_key</code> 를 인식해 <code>ON/OFF</code> 에 할당했다면, <code>Apply</code> 를 눌러 적용합니다. 적용되었다면 로그아웃 및 로그인 하여 오른쪽 아래에 uim ui가 뜨는지 확인합니다.</li>
+</ol>
+<h2 id="vim">Vim</h2>
+<p><strong>Vundle/airline/syntastics</strong> <code>vim</code> 을 위한 플러그인 관리 툴과 UI개선 플러그인, 문법 검증 플러그인입니다. 우선<code>~/.vim/bundle/Vundle.vim</code>폴더에 <code>Vundle</code> 을 클론 해줍니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+</code></pre></div><p>이후 <code>~/.vimrc</code> 의 제일 위쪽에 아래 설정을 추가합니다. 이 설정은 미려한 Status-bar를 표시해주는 <code>vim-airline</code> 플러그인과 IDE와 비슷하게 문법 오류를 체크해주는 <code>vim-syntastic</code> 플러그인을 포함합니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#008000">set</span> nocompatible
+<span style="color:#008000">set</span> number
+filetype off
+
+<span style="color:#008000">set</span> <span style="color:#19177c">rtp</span><span style="color:#666">+=</span>~/.vim/bundle/Vundle.vim
+call vundle#begin<span style="color:#666">()</span>
+
+Plugin <span style="color:#ba2121">&#39;VundleVim/Vundle.vim&#39;</span>
+
+Plugin <span style="color:#ba2121">&#39;tpope/vim-fugitive&#39;</span>
+Plugin <span style="color:#ba2121">&#39;git://git.wincent.com/command-t.git&#39;</span>
+Plugin <span style="color:#ba2121">&#39;rstacruz/sparkup&#39;</span>, <span style="color:#666">{</span><span style="color:#ba2121">&#39;rtp&#39;</span>: <span style="color:#ba2121">&#39;vim/&#39;</span><span style="color:#666">}</span>
+
+<span style="color:#ba2121">&#34;&#34;</span> vim-airline
+Plugin <span style="color:#ba2121">&#39;vim-airline/vim-airline&#39;</span>
+Plugin <span style="color:#ba2121">&#39;vim-airline/vim-airline-themes&#39;</span>
+<span style="color:#008000">let</span> g:airline_powerline_fonts<span style="color:#666">=</span><span style="color:#666">1</span>
+
+<span style="color:#ba2121">&#34;&#34;</span> vim-syntastic
+Plugin <span style="color:#ba2121">&#39;scrooloose/syntastic&#39;</span>
+
+call vundle#end<span style="color:#666">()</span>
+filetype plugin indent on
+
+<span style="color:#ba2121">&#34;&#34;</span> settings-syntastic
+<span style="color:#008000">set</span> <span style="color:#19177c">statusline</span><span style="color:#666">+=</span>%#warningmsg#
+<span style="color:#008000">set</span> <span style="color:#19177c">statusline</span><span style="color:#666">+=</span>%<span style="color:#666">{</span>SyntasticStatuslineFlag<span style="color:#666">()}</span>
+<span style="color:#008000">set</span> <span style="color:#19177c">statusline</span><span style="color:#666">+=</span>%*
+
+<span style="color:#008000">let</span> g:syntastic_always_populate_loc_list <span style="color:#666">=</span> <span style="color:#666">1</span>
+<span style="color:#008000">let</span> g:syntastic_auto_loc_list <span style="color:#666">=</span> <span style="color:#666">1</span>
+<span style="color:#008000">let</span> g:syntastic_check_on_open <span style="color:#666">=</span> <span style="color:#666">1</span>
+<span style="color:#008000">let</span> g:syntastic_check_on_wq <span style="color:#666">=</span> <span style="color:#666">0</span>
+</code></pre></div><p>설정을 추가했다면 <code>vim</code> 을 실행한 뒤, <code>:PluginInstall</code> 명령어를 입력해 플러그인 설치를 완료합니다.</p>
+<h2 id="github">Github</h2>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git config --global user.name <span style="color:#ba2121">&#34;junghyun397&#34;</span>
+git config --global user.email <span style="color:#ba2121">&#34;junghyun397@gmail.com&#34;</span>
+git config --global color.ui <span style="color:#008000">true</span>
+git config --global core.editor vi
+
+ssh-keygen -t rsa -C <span style="color:#ba2121">&#34;junghyun397@gmail.com&#34;</span>
+cat ~/.ssh/id_rsa.pub
+</code></pre></div><p>출력 된 <code>id_rsa.pub</code> 을 <a href="https://github.com/settings/keys">https://github.com/settings/keys</a> 에 등록해 Github에 SSH 키 등록을 마칩니다. 이제 다음 명령어를 이용해 제대로 등록이 됐는지 확인해 볼 수 있습니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh -T git@github.com
+</code></pre></div><h2 id="sdks">SDKs</h2>
+<h3 id="jdk">JDK</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt install default-jre openjdk-8-jdk openjdk-11-jdk
+</code></pre></div><h3 id="sbt">SBT</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt install scala
+<span style="color:#008000">echo</span> <span style="color:#ba2121">&#34;deb https://dl.bintray.com/sbt/debian /&#34;</span> | sudo tee -a /etc/apt/sources.list.d/sbt.list
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+sudo apt update <span style="color:#666">&amp;&amp;</span> sudo apt install sbt
+</code></pre></div><h4 id="android-sdk">Android SDK</h4>
+<p>공식 홈페이지 - <a href="https://developer.android.com/studio#command-tools">https://developer.android.com/studio#command-tools</a> 에서 <code>commandlinetools</code> 를 다운로드 받은 뒤 설치합니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir .android
+unzip ~/Downloads/commandlinetools-linux-*.zip
+mv cmdline-tools .android/
+</code></pre></div><p><code>.zshrc</code> 아래에 다음 내용을 추가합니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#19177c">JAVA_HOME</span><span style="color:#666">=</span><span style="color:#ba2121">&#34;/usr/lib/jvm/java-8-openjdk-amd64&#34;</span>
+<span style="color:#19177c">ANDROID_HOME</span><span style="color:#666">=</span><span style="color:#ba2121">&#34;</span><span style="color:#19177c">$HOME</span><span style="color:#ba2121">/.android&#34;</span>
+
+<span style="color:#008000">export</span> JAVA_HOME
+<span style="color:#008000">export</span> ANDROID_HOME
+
+<span style="color:#008000">export</span> <span style="color:#19177c">PATH</span><span style="color:#666">=</span><span style="color:#ba2121">&#34;</span><span style="color:#19177c">$PATH</span><span style="color:#ba2121">:</span><span style="color:#19177c">$JAVA_HOME</span><span style="color:#ba2121">/bin:</span><span style="color:#19177c">$ANDROID_HOME</span><span style="color:#ba2121">/cmdline-tools/bin:</span><span style="color:#19177c">$ANDROID_HOME</span><span style="color:#ba2121">/platform-tools&#34;</span>
+</code></pre></div><p>추가된 내용을 <code>source .zshrc</code> 명령어로 업데이트한 뒤, <code>sdkmanager</code> 를 이용해 안드로이드 SDK 를 다운로드 받습니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sdkmanager --sdk_root<span style="color:#666">=</span><span style="color:#19177c">$ANDROID_HOME</span> <span style="color:#ba2121">&#34;platform-tools&#34;</span> <span style="color:#ba2121">&#34;platforms;android-29&#34;</span> <span style="color:#ba2121">&#34;platforms;android-30&#34;</span> <span style="color:#ba2121">&#34;build-tools;28.0.3&#34;</span>
+sdkmanager --sdk_root<span style="color:#666">=</span><span style="color:#19177c">$ANDROID_HOME</span> --licenses
+</code></pre></div><h3 id="flutter">Flutter</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir .flutter
+<span style="color:#008000">cd</span> .flutter
+git clone https://github.com/flutter/flutter.git -b stable --depth <span style="color:#666">1</span>
+</code></pre></div><p><code>.zshrc</code> 아래에 다음 내용을 추가합니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#008000">export</span> <span style="color:#19177c">PATH</span><span style="color:#666">=</span><span style="color:#ba2121">&#34;</span><span style="color:#19177c">$PATH</span><span style="color:#ba2121">:</span><span style="color:#19177c">$HOME</span><span style="color:#ba2121">/.flutter/flutter/bin&#34;</span>
+</code></pre></div><p>추가된 내용을 <code>source .zshrc</code> 명령어로 업데이트 한 뒤, Flutter 바이너리를 다운로드 받아 <code>flutter doctor</code> 를 실행해 정상 설치를 확인합니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">flutter precache
+flutter doctor --android-licenses
+flutter doctor
+</code></pre></div><h2 id="apps">Apps</h2>
+<h3 id="chrome">Chrome</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c <span style="color:#ba2121">&#39;echo &#34;deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main&#34;&gt;&gt; /etc/apt/sources.list.d/google-chrome.list&#39;</span>
+sudo apt update <span style="color:#666">&amp;&amp;</span> sudo apt install google-chrome-stable
+</code></pre></div><p>설치 후 <code>Use System title bar and boarder</code> 를 활성화 하고, <code>ADBlock</code> 을 설치 했다면 <code>Allow Acceptable Ads</code> 를 비활성화 합니다.</p>
+<h3 id="jetbrains-tool-box">Jetbrains Tool box</h3>
+<p>공식 홈페이지 - <a href="https://www.jetbrains.com/ko-kr/toolbox-app/">https://www.jetbrains.com/ko-kr/toolbox-app/</a> 에서 툴박스 앱을 다운로드 받은 뒤 설치합니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#008000">cd</span> Downloads
+tar -xvf jetbrains-toolbox-*.tar.gz
+<span style="color:#008000">cd</span> jetbrains-toolbox-*
+chmod <span style="color:#666">700</span> jetbrrains-toolbox
+./jetbrains-toolbox
+</code></pre></div><h3 id="texlive">TeXLive</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt install texlive-latex-extra
+</code></pre></div><h3 id="typora">Typora</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+sudo add-apt-repository <span style="color:#ba2121">&#39;deb https://typora.io/linux ./&#39;</span>
+sudo apt update <span style="color:#666">&amp;&amp;</span> sudo apt install typora
+</code></pre></div><h3 id="discord">Discord</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget -O ~/Downloads/discord.deb <span style="color:#ba2121">&#34;https://discordapp.com/api/download?platform=linux&amp;format=deb&#34;</span>
+sudo gdebi ~/Downloads/discord.deb
+</code></pre></div><p>수동 다운로드를 상당히 자주 요구하기에, 스크립트로 만들어 놓으면 더 좋습니다.</p>
+<h3 id="spotify">Spotify</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add - 
+<span style="color:#008000">echo</span> <span style="color:#ba2121">&#34;deb http://repository.spotify.com stable non-free&#34;</span> | sudo tee /etc/apt/sources.list.d/spotify.list
+
+sudo apt update <span style="color:#666">&amp;&amp;</span> sudo apt install spotify-client
+</code></pre></div><h3 id="wireshark">WireShark</h3>
+<p>sudo로 실행하지 않아도 패킷을 잡을 수 있도록 sudo권한을 부여합니다. 당연하겠지만 <strong>절대 서버/공용 환경에서 따라 하면 안 됩니다.</strong></p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt install wireshark
+sudo adduser <span style="color:#19177c">$USER</span> wireshark
+</code></pre></div><h3 id="vlc">VLC</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt install vlc
+</code></pre></div><h3 id="gimp">GIMP</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo add-apt-repository ppa:ubuntuhandbook1/gimp
+sudo apt update <span style="color:#666">&amp;&amp;</span> sudo apt install gimp
+</code></pre></div><h3 id="blender">Blender</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo add-apt-repository ppa:thomas-schiex/blender
+sudo apt update <span style="color:#666">&amp;&amp;</span> sudo apt install blender
+</code></pre></div><h3 id="virtualbox">VirtualBox</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt install virtualbox
+</code></pre></div><h3 id="hugo">HUGO</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt install hugo
+</code></pre></div><h2 id="windows-utc">Windows - UTC TimeZone</h2>
+<p>Windows는 메인보드에 저장된 시간을 현지 시간으로, 리눅스는 UTC 시간으로 해석합니다.  이를 해결하기 위해서는, 윈도우가 메인보드에 저장된 시간을 UTC로 해석하도록 설정 할 필요가 있습니다. 먼저, 시작 메뉴에서 <code>regedit</code> 를 타이핑해 레지스트리 편집기를 실행한 뒤, 아래의 경로를 복사해 붙여 넣습니다.</p>
+<pre><code>컴퓨터\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation
+</code></pre><p>이후 우클릭으로 새 <code>32bit</code> <code>DWORD</code> 값을 만들고, 이름을 <code>RealTimeIsUniversal</code> 로 고칩니다. 만든 값을 더블클릭해 값을 <code>1</code>로 지정한 뒤 저장합니다.</p>
+<h2 id="etc">조금은 유용할 정보들</h2>
+<h3 id="inbound-rst-패킷-차단">Inbound RST 패킷 차단</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo iptables -I INPUT -p tcp --tcp-flags ALL RST -j DROP
+</code></pre></div><h3 id="ttl-변경">TTL 변경</h3>
+<p><code>/etc/sysctl.conf</code> 아래에 다음 내용을 추가합니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">net.ipv4.ip_default_ttl<span style="color:#666">=</span><span style="color:#666">42</span>
+</code></pre></div><h2 id="wallpaper">배경화면</h2>
+<p>큰 화면과 파랑 계열의 테마에 어울리는 <code>단색기반 배경화면</code> 과 작은 화면과 <code>yaru</code> 테마에 어울리는 <code>그라이데션기반 배경화면</code> 이 준비되어 있습니다. <code>진정한 돌고래러</code> 라면 배경화면도 돌고래입니다.</p>
+<p><strong>ubuntu-orange</strong>: 우분투 스타일의 그라이데션을 배경으로 사용한 바탕화면입니다. <code>13.3인치</code> 화면에 맞추어 제작되었으며, <code>16:9</code>, <code>3200x1800</code> 해상도가 준비돼 있습니다. <a href="https://user-images.githubusercontent.com/32453112/80272788-77a45280-8707-11ea-95d8-f87149de8423.png"target="_blank">여기</a>를 눌러 원본 크기로 다운로드 합니다.</p>
+<p><a target="_blank" rel="noopener noreferrer" 
+  href="https://user-images.githubusercontent.com/32453112/80278299-088f2400-8730-11ea-9b51-71e286b0567a.png"><img  src="https://user-images.githubusercontent.com/32453112/80278299-088f2400-8730-11ea-9b51-71e286b0567a.png"
+        alt="orange-resized"/></a></p>
+<p><strong>blue</strong>: 단색 파랑을 배경으로 사용한 바탕화면 입니다. <code>29인치</code> 와 <code>23인치</code> 화면에 맞추어 제작되었으며, <code>21:9</code> <code>16:9</code>, <code>37:9(합쳐짐, 듀얼모니터 전용)</code>, <code>2560x1080</code>, <code>1920x1080</code> 해상도가 준비되어 있습니다. <a href="https://user-images.githubusercontent.com/32453112/80272782-69563680-8707-11ea-952d-227e894c5e95.png"target="_blank">이 링크(21:9)</a> 와 <a href="https://user-images.githubusercontent.com/32453112/112414184-f87b2c80-8d64-11eb-9c7b-814b3285ecf7.png"target="_blank">이 링크(16:9)</a>, <a href="https://user-images.githubusercontent.com/32453112/112414701-d635de80-8d65-11eb-8162-f4cb31516bdf.png"target="_blank">이 링크(37:9)</a> 를 눌러 원본 크기로 다운로드 합니다.</p>
+<p><a target="_blank" rel="noopener noreferrer" 
+  href="https://user-images.githubusercontent.com/32453112/80272782-69563680-8707-11ea-952d-227e894c5e95.png"><img  src="https://user-images.githubusercontent.com/32453112/80272782-69563680-8707-11ea-952d-227e894c5e95.png"
+        alt="blue"/></a></p>
+<h3 id="듀얼모니터">듀얼모니터</h3>
+<p>GNOME Shell은 모니터별로 배경화면을 할당하는 기능을 제공하지 않습니다. 듀얼모니터에 서로 다른 배경화면을 설정하기 위해서는 가로로 합쳐진 이미지를 배경으로 설정한 뒤, 배경 표시 옵션을 <code>spanned</code> 로 설정해야 합니다.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gsettings <span style="color:#008000">set</span> org.gnome.desktop.background picture-options spanned
+</code></pre></div></article><section class="article labels"><a class="category" href=/categories/linux/>linux</a><a class="tag" href=/tags/ubuntu/>ubuntu</a><a class="tag" href=/tags/gnome/>gnome</a></section><section class="article navigation"><p><a class="link" href="/post/8th-best-of-the-best/"><span class="li">&larr;</span>Best of the Best 8기 수료 후기</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "do1phin" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div><section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2020 junghyun397.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div></section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-158778546-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
+</body>
+
+</html>
