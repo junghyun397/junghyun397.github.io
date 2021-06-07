@@ -159,14 +159,14 @@ cat ~/.ssh/id_rsa.pub
 </code></pre></div><p>출력 된 <code>id_rsa.pub</code> 을 <a href="https://github.com/settings/keys">https://github.com/settings/keys</a> 에 등록해 Github에 SSH 키 등록을 마칩니다. 이제 다음 명령어를 이용해 제대로 등록이 됐는지 확인해 볼 수 있습니다.</p>
 <div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh -T git@github.com
 </code></pre></div><h2 id="sdks">SDKs</h2>
-<h2 id="docker">Docker</h2>
+<h3 id="docker">Docker</h3>
 <div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 <span style="color:#008000">echo</span> <span style="color:#b62;font-weight:bold">\ </span>        
   <span style="color:#ba2121">&#34;deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
 </span><span style="color:#ba2121">  </span><span style="color:#008000;font-weight:bold">$(</span>lsb_release -cs<span style="color:#008000;font-weight:bold">)</span><span style="color:#ba2121"> stable&#34;</span> | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
 sudo apt update
 sudo apt install docker-ce docker-ce-cli
-</code></pre></div><h3 id="docker-compose">Docker compose</h3>
+</code></pre></div><h4 id="docker-compose">Docker compose</h4>
 <div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo curl -L <span style="color:#ba2121">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span style="color:#008000;font-weight:bold">$(</span>uname -s<span style="color:#008000;font-weight:bold">)</span><span style="color:#ba2121">-</span><span style="color:#008000;font-weight:bold">$(</span>uname -m<span style="color:#008000;font-weight:bold">)</span><span style="color:#ba2121">&#34;</span> -o /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
