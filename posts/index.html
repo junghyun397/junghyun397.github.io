@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>404 Page not found | junghyun397 Blog</title>
+<title>Posts | junghyun397 Blog</title>
 <meta name="keywords" content="" />
-<meta name="description" content="Maybe JeongHyeon Choi&#39;s blog.">
+<meta name="description" content="Posts - junghyun397 Blog">
 <meta name="author" content="junghyun397">
-<link rel="canonical" href="https://do1ph.in/404.html" />
+<link rel="canonical" href="https://do1ph.in/posts/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.c409be0345a5b9ddc8e1886923586c86062fbe21e4d894c3dae4a16903413edd.css" integrity="sha256-xAm&#43;A0Wlud3I4YhpI1hshgYvviHk2JTD2uShaQNBPt0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://do1ph.in/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://do1ph.in/favicon-16x16.png">
@@ -19,6 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.90.1" />
+<link rel="alternate" type="application/rss+xml" href="https://do1ph.in/posts/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -67,15 +68,30 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><meta property="og:title" content="404 Page not found" />
+</script><meta property="og:title" content="Posts" />
 <meta property="og:description" content="Maybe JeongHyeon Choi&#39;s blog." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://do1ph.in/404.html" />
+<meta property="og:url" content="https://do1ph.in/posts/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="404 Page not found"/>
+<meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content="Maybe JeongHyeon Choi&#39;s blog."/>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://do1ph.in/posts/"
+    }
+  ]
+}
+</script>
 </head>
 
 <body class="list" id="top">
@@ -141,8 +157,101 @@ if (!doNotTrack) {
         </ul>
     </nav>
 </header>
-<main class="main">
-<div class="not-found">404</div>
+<main class="main"> 
+<header class="page-header">
+  <h1>Posts</h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Github Actions로 Flutter 앱 빌드하기
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>요즘 Github Actions 가 그렇게 맛집이라고 하더군요! 그래서 해 봤습니다: Github Actions 로 Flutter 앱 빌드하기. 이 글에서는 Github Actions에서 Flutter 앱을 Android APK 또는 AppBundle 로 빌드하는 방법을 소개하며, (작동하는지는 불확실하지만,) IOS ipa로 빌드하는 방법도 함께 소개합니다.
+Secret 등록 안드로이드 앱을 스토어에 등록하기 위해서는(=릴리스모드로 빌드하기 위해서는) Android Keystore 가 필요합니다.
+Settings &gt; Secrets &gt; Actions secrets 에서 Secrets 들을 등록해야 합니다.
+ ANDROID_KEYSTORE_BASE64 등록: key.jks 를 base64 로 인코딩한 문자열을 등록해야 합니다....</p>
+  </section>
+  <footer class="entry-footer">
+
+<ul class="nodot">
+    <li>March 26, 2021&nbsp;·&nbsp;junghyun397</li>
+    <li>
+        <p class="labels"><a class="labels-category" href="/categories/devops/">devops</a><a class="labels-tag" href="/tags/flutter/">flutter</a><a class="labels-tag" href="/tags/ci/cd/">CI/CD</a></p>
+    </li>
+</ul>
+
+</footer>
+  <a class="entry-link" aria-label="post link to Github Actions로 Flutter 앱 빌드하기" href="https://do1ph.in/posts/flutter-action/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>리눅스에서 liquidctl로 수냉쿨러 컨트롤 하기
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>우선 전 Corsair 사의 일체형 쿨러인 H100i v2를 4년간 사용하고 있었습니다. 우분투 18.04를 사용할 때는 윈도우에서 작동하는 CorsairLink에서 설정한 값이 잘 유지가 되었었지만, 어째 20.04로 넘어오니 부팅할 때 마다 수냉쿨러 설정값이 초기화 되더군요. 극저소음 빌드를 지향했기에 펌프와 팬 두 개가 웅웅대는 소음이 여간 거슬리는 게 아니었습니다. 물론 이를 해결할 수 있는 CorsairLink는 당연하게도(…) 리눅스를 지원하지 않았습니다.
+CorsairLink에서 수냉쿨러에 USB로 어떤 패킷을 보내는지 덤프라도 떠 봐야 하나 싶었지만, 이미 liquidctl이라는 훌륭한 해결책이 존재했습니다....</p>
+  </section>
+  <footer class="entry-footer">
+
+<ul class="nodot">
+    <li>August 13, 2020&nbsp;·&nbsp;junghyun397</li>
+    <li>
+        <p class="labels"><a class="labels-category" href="/categories/linux/">linux</a><a class="labels-tag" href="/tags/system/">system</a><a class="labels-tag" href="/tags/hardware/">hardware</a></p>
+    </li>
+</ul>
+
+</footer>
+  <a class="entry-link" aria-label="post link to 리눅스에서 liquidctl로 수냉쿨러 컨트롤 하기" href="https://do1ph.in/posts/control-aio-in-linux/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Best of the Best 8기 수료 후기
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>2019년 7월부터 2020년 3월까지, 약 9개월간 진행된 Best of the Best 8기 보안제품 개발 트랙을 수료 했습니다. 고등학교와 BoB활동을 동시에 진행 한만큼 힘든점도 많았고 양쪽 모두에 성실히 참여 했다고도 단정할 수 없지만, 힘들었던 만큼 얻어간 결과도 확실 하기에 정말로 추천 드릴만한 교육 과정이라 할 수 있습니다.
+누구나 한 번은 찍어 본다는 안양천 뷰
+지난 9개월동안의 BoB활동을 정리하며 BoB가 도대체 뭐 하는 곳인지 궁금한 분이나 BoB에 지원할 계획이 있는 분에게 도음이 될겸 BoB 지원과 BoB생활, 그리고 개인적인 리뷰를 적어 보겠습니다....</p>
+  </section>
+  <footer class="entry-footer">
+
+<ul class="nodot">
+    <li>May 6, 2020&nbsp;·&nbsp;junghyun397</li>
+    <li>
+        <p class="labels"><a class="labels-category" href="/categories/experience/">experience</a><a class="labels-tag" href="/tags/security/">security</a><a class="labels-tag" href="/tags/course/">course</a></p>
+    </li>
+</ul>
+
+</footer>
+  <a class="entry-link" aria-label="post link to Best of the Best 8기 수료 후기" href="https://do1ph.in/posts/8th-best-of-the-best/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Ubuntu 20.04 LTS 설치 후 작업환경 구성하기
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>우분투 20.04 장기 지원 버전(LTS) 이 릴리스 되었습니다. 매번 OS를 새로 설치할 때마다 삽질하지 않도록 우분투를 처음 설치했을 때 작업 환경을 세팅하는 과정을 글로 정리해 봤습니다. Pop! shell 및 ifcitx-hangul 설정과 uim-byeoru 설정, oh-my-zsh 설정과 vundle 등의 설정을 포함합니다.
+ 개인적으로 사용하기 위해 정리한 성격이 강한 글입니다. 최소한 22.04 LTS가 나오기 전까지는 계속 업데이트 될 예정입니다. Ubuntu 20.04 LTS, 영문 기준으로 작성되었으며, RYZEN 1700 &#43; GTX1080 &#43; NVMe SSD  데스크톱과 DELL XPS 13 9350 랩톱 하드웨어에서 정상 작동을 확인했습니다....</p>
+  </section>
+  <footer class="entry-footer">
+
+<ul class="nodot">
+    <li>April 25, 2020&nbsp;·&nbsp;junghyun397</li>
+    <li>
+        <p class="labels"><a class="labels-category" href="/categories/linux/">linux</a><a class="labels-tag" href="/tags/ubuntu/">ubuntu</a><a class="labels-tag" href="/tags/gnome/">gnome</a></p>
+    </li>
+</ul>
+
+</footer>
+  <a class="entry-link" aria-label="post link to Ubuntu 20.04 LTS 설치 후 작업환경 구성하기" href="https://do1ph.in/posts/setup-ubuntu-20-04-lts/"></a>
+</article>
     </main>
     
 <footer class="footer">

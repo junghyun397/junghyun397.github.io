@@ -1,24 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>flutter on junghyun397 Blog</title>
-    <link>/tags/flutter/</link>
+    <link>https://do1ph.in/tags/flutter/</link>
     <description>Recent content in flutter on junghyun397 Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language>
-    <copyright>©2021 junghyun397.</copyright>
-    <lastBuildDate>Fri, 26 Mar 2021 15:27:32 +0900</lastBuildDate>
-    
-        <atom:link href="/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>ko</language>
+    <lastBuildDate>Fri, 26 Mar 2021 15:27:32 +0900</lastBuildDate><atom:link href="https://do1ph.in/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Github Actions로 Flutter 앱 빌드하기</title>
-      <link>/post/flutter-action/</link>
+      <link>https://do1ph.in/posts/flutter-action/</link>
       <pubDate>Fri, 26 Mar 2021 15:27:32 +0900</pubDate>
       
-      <guid>/post/flutter-action/</guid>
-      <description>요즘 Github Actions 가 그렇게 맛집이라고 하더군요! 그래서 해 봤습니다: Github Actions 로 Flutter 앱 빌드하기. 이 글에서는 Github Actions에서 Flutter 앱을 Android APK 또는 AppBundle 로 빌드하는 방법을 소개</description>
+      <guid>https://do1ph.in/posts/flutter-action/</guid>
+      <description>Github Actions를 이용해 Flutter 앱을 여러 플랫폼으로 빌드하는 방법을 정리해 봤습니다.</description>
     </item>
     
   </channel>

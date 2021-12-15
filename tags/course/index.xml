@@ -1,24 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>course on junghyun397 Blog</title>
-    <link>/tags/course/</link>
+    <link>https://do1ph.in/tags/course/</link>
     <description>Recent content in course on junghyun397 Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ko-kr</language>
-    <copyright>©2021 junghyun397.</copyright>
-    <lastBuildDate>Wed, 06 May 2020 23:20:00 +0900</lastBuildDate>
-    
-        <atom:link href="/tags/course/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>ko</language>
+    <lastBuildDate>Wed, 06 May 2020 23:20:00 +0900</lastBuildDate><atom:link href="https://do1ph.in/tags/course/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Best of the Best 8기 수료 후기</title>
-      <link>/post/8th-best-of-the-best/</link>
+      <link>https://do1ph.in/posts/8th-best-of-the-best/</link>
       <pubDate>Wed, 06 May 2020 23:20:00 +0900</pubDate>
       
-      <guid>/post/8th-best-of-the-best/</guid>
-      <description>2019년 7월부터 2020년 3월까지, 약 9개월간 진행된 Best of the Best 8기 보안제품 개발 트랙을 수료 했습니다. 고등학교와 BoB활동을 동시에 진행 한만큼 힘든</description>
+      <guid>https://do1ph.in/posts/8th-best-of-the-best/</guid>
+      <description>차세대 보안리더 양성 프로그램 - BoB 8기 과정을 글로 정리해 봤습니다.</description>
     </item>
     
   </channel>
