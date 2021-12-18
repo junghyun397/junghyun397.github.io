@@ -8,6 +8,15 @@
     <language>ko</language>
     <lastBuildDate>Fri, 26 Mar 2021 15:27:32 +0900</lastBuildDate><atom:link href="https://do1ph.in/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>조판 시험 페이지</title>
+      <link>https://do1ph.in/test/</link>
+      <pubDate>Sun, 19 Dec 2021 02:04:11 +0900</pubDate>
+      
+      <guid>https://do1ph.in/test/</guid>
+      <description>Hugo 의 조판 기능이 제대로 작동하는지 시험합니다.</description>
+    </item>
+    
+    <item>
       <title>Github Actions로 Flutter 앱 빌드하기</title>
       <link>https://do1ph.in/posts/flutter-action/</link>
       <pubDate>Fri, 26 Mar 2021 15:27:32 +0900</pubDate>
