@@ -6,7 +6,25 @@
     <description>Recent content in Tags on junghyun397 Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
-    <lastBuildDate>Fri, 26 Mar 2021 15:27:32 +0900</lastBuildDate><atom:link href="https://do1ph.in/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Feb 2022 04:53:20 +0900</lastBuildDate><atom:link href="https://do1ph.in/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>system</title>
+      <link>https://do1ph.in/tags/system/</link>
+      <pubDate>Mon, 14 Feb 2022 04:53:20 +0900</pubDate>
+      
+      <guid>https://do1ph.in/tags/system/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ubuntu</title>
+      <link>https://do1ph.in/tags/ubuntu/</link>
+      <pubDate>Mon, 14 Feb 2022 04:53:20 +0900</pubDate>
+      
+      <guid>https://do1ph.in/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>flutter</title>
       <link>https://do1ph.in/tags/flutter/</link>
@@ -22,15 +40,6 @@
       <pubDate>Thu, 13 Aug 2020 12:21:07 +0900</pubDate>
       
       <guid>https://do1ph.in/tags/hardware/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>system</title>
-      <link>https://do1ph.in/tags/system/</link>
-      <pubDate>Thu, 13 Aug 2020 12:21:07 +0900</pubDate>
-      
-      <guid>https://do1ph.in/tags/system/</guid>
       <description></description>
     </item>
     
@@ -58,15 +67,6 @@
       <pubDate>Sat, 25 Apr 2020 19:00:00 +0900</pubDate>
       
       <guid>https://do1ph.in/tags/gnome/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ubuntu</title>
-      <link>https://do1ph.in/tags/ubuntu/</link>
-      <pubDate>Sat, 25 Apr 2020 19:00:00 +0900</pubDate>
-      
-      <guid>https://do1ph.in/tags/ubuntu/</guid>
       <description></description>
     </item>
     

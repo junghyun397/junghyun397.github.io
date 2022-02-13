@@ -2,11 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://do1ph.in/categories/</loc>
+    <lastmod>2022-02-14T04:53:20+09:00</lastmod>
+  </url><url>
+    <loc>https://do1ph.in/</loc>
+    <lastmod>2022-02-14T04:53:20+09:00</lastmod>
+  </url><url>
+    <loc>https://do1ph.in/categories/linux/</loc>
+    <lastmod>2022-02-14T04:53:20+09:00</lastmod>
+  </url><url>
+    <loc>https://do1ph.in/posts/</loc>
+    <lastmod>2022-02-14T04:53:20+09:00</lastmod>
+  </url><url>
+    <loc>https://do1ph.in/tags/system/</loc>
+    <lastmod>2022-02-14T04:53:20+09:00</lastmod>
+  </url><url>
+    <loc>https://do1ph.in/tags/</loc>
+    <lastmod>2022-02-14T04:53:20+09:00</lastmod>
+  </url><url>
+    <loc>https://do1ph.in/tags/ubuntu/</loc>
+    <lastmod>2022-02-14T04:53:20+09:00</lastmod>
+  </url><url>
+    <loc>https://do1ph.in/posts/ubuntu-immediately-wakes/</loc>
+    <lastmod>2022-02-14T04:53:20+09:00</lastmod>
+  </url><url>
     <loc>https://do1ph.in/test/</loc>
     <lastmod>2021-12-19T02:04:11+09:00</lastmod>
-  </url><url>
-    <loc>https://do1ph.in/categories/</loc>
-    <lastmod>2021-03-26T15:27:32+09:00</lastmod>
   </url><url>
     <loc>https://do1ph.in/categories/devops/</loc>
     <lastmod>2021-03-26T15:27:32+09:00</lastmod>
@@ -17,22 +38,7 @@
     <loc>https://do1ph.in/posts/flutter-action/</loc>
     <lastmod>2021-03-26T15:27:32+09:00</lastmod>
   </url><url>
-    <loc>https://do1ph.in/</loc>
-    <lastmod>2021-03-26T15:27:32+09:00</lastmod>
-  </url><url>
-    <loc>https://do1ph.in/posts/</loc>
-    <lastmod>2021-03-26T15:27:32+09:00</lastmod>
-  </url><url>
-    <loc>https://do1ph.in/tags/</loc>
-    <lastmod>2021-03-26T15:27:32+09:00</lastmod>
-  </url><url>
     <loc>https://do1ph.in/tags/hardware/</loc>
-    <lastmod>2020-08-13T12:21:07+09:00</lastmod>
-  </url><url>
-    <loc>https://do1ph.in/categories/linux/</loc>
-    <lastmod>2020-08-13T12:21:07+09:00</lastmod>
-  </url><url>
-    <loc>https://do1ph.in/tags/system/</loc>
     <lastmod>2020-08-13T12:21:07+09:00</lastmod>
   </url><url>
     <loc>https://do1ph.in/posts/control-aio-in-linux/</loc>
@@ -51,9 +57,6 @@
     <lastmod>2020-05-06T23:20:00+09:00</lastmod>
   </url><url>
     <loc>https://do1ph.in/tags/gnome/</loc>
-    <lastmod>2020-04-25T19:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://do1ph.in/tags/ubuntu/</loc>
     <lastmod>2020-04-25T19:00:00+09:00</lastmod>
   </url><url>
     <loc>https://do1ph.in/posts/setup-ubuntu-20-04-lts/</loc>

@@ -6,7 +6,16 @@
     <description>Recent content in system on junghyun397 Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
-    <lastBuildDate>Thu, 13 Aug 2020 12:21:07 +0900</lastBuildDate><atom:link href="https://do1ph.in/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Feb 2022 04:53:20 +0900</lastBuildDate><atom:link href="https://do1ph.in/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu 절전(Suspend)모드 풀림 해결 방법</title>
+      <link>https://do1ph.in/posts/ubuntu-immediately-wakes/</link>
+      <pubDate>Mon, 14 Feb 2022 04:53:20 +0900</pubDate>
+      
+      <guid>https://do1ph.in/posts/ubuntu-immediately-wakes/</guid>
+      <description>절전(Suspend)모드에 진입한 직후 알 수 없는 이유로 USB wake 신호를 받는 문제를 해결해 봅시다.</description>
+    </item>
+    
     <item>
       <title>리눅스에서 liquidctl로 수냉쿨러 컨트롤 하기</title>
       <link>https://do1ph.in/posts/control-aio-in-linux/</link>
