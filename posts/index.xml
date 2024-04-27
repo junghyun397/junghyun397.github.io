@@ -6,7 +6,16 @@
     <description>Recent content in Posts on junghyun397 Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
-    <lastBuildDate>Mon, 14 Feb 2022 04:53:20 +0900</lastBuildDate><atom:link href="https://do1ph.in/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Nov 2022 05:20:41 +0900</lastBuildDate><atom:link href="https://do1ph.in/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Transposition table과 Zobrist hashing</title>
+      <link>https://do1ph.in/posts/transposition-table-and-zobrist-hashing/</link>
+      <pubDate>Mon, 28 Nov 2022 05:20:41 +0900</pubDate>
+      
+      <guid>https://do1ph.in/posts/transposition-table-and-zobrist-hashing/</guid>
+      <description>틱택토로 알아보는 타뷸레이션 해싱(Tabulation Hashing)과 전치테이블(Transposition Table)</description>
+    </item>
+    
     <item>
       <title>Ubuntu 절전(Suspend)모드 풀림 해결 방법</title>
       <link>https://do1ph.in/posts/ubuntu-immediately-wakes/</link>

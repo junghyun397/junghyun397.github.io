@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>algorithms on junghyun397 Blog</title>
+    <link>https://do1ph.in/tags/algorithms/</link>
+    <description>Recent content in algorithms on junghyun397 Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko</language>
+    <lastBuildDate>Mon, 28 Nov 2022 05:20:41 +0900</lastBuildDate><atom:link href="https://do1ph.in/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Transposition table과 Zobrist hashing</title>
+      <link>https://do1ph.in/posts/transposition-table-and-zobrist-hashing/</link>
+      <pubDate>Mon, 28 Nov 2022 05:20:41 +0900</pubDate>
+      
+      <guid>https://do1ph.in/posts/transposition-table-and-zobrist-hashing/</guid>
+      <description>틱택토로 알아보는 타뷸레이션 해싱(Tabulation Hashing)과 전치테이블(Transposition Table)</description>
+    </item>
+    
+  </channel>
+</rss>

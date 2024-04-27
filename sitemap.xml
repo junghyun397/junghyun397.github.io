@@ -2,22 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://do1ph.in/categories/ai/</loc>
+    <lastmod>2022-11-28T05:20:41+09:00</lastmod>
+  </url><url>
+    <loc>https://do1ph.in/tags/algorithms/</loc>
+    <lastmod>2022-11-28T05:20:41+09:00</lastmod>
+  </url><url>
+    <loc>https://do1ph.in/tags/caching/</loc>
+    <lastmod>2022-11-28T05:20:41+09:00</lastmod>
+  </url><url>
     <loc>https://do1ph.in/categories/</loc>
-    <lastmod>2022-02-14T04:53:20+09:00</lastmod>
+    <lastmod>2022-11-28T05:20:41+09:00</lastmod>
+  </url><url>
+    <loc>https://do1ph.in/tags/game/</loc>
+    <lastmod>2022-11-28T05:20:41+09:00</lastmod>
   </url><url>
     <loc>https://do1ph.in/</loc>
-    <lastmod>2022-02-14T04:53:20+09:00</lastmod>
+    <lastmod>2022-11-28T05:20:41+09:00</lastmod>
+  </url><url>
+    <loc>https://do1ph.in/posts/</loc>
+    <lastmod>2022-11-28T05:20:41+09:00</lastmod>
+  </url><url>
+    <loc>https://do1ph.in/tags/</loc>
+    <lastmod>2022-11-28T05:20:41+09:00</lastmod>
+  </url><url>
+    <loc>https://do1ph.in/posts/transposition-table-and-zobrist-hashing/</loc>
+    <lastmod>2022-11-28T05:20:41+09:00</lastmod>
   </url><url>
     <loc>https://do1ph.in/categories/linux/</loc>
     <lastmod>2022-02-14T04:53:20+09:00</lastmod>
   </url><url>
-    <loc>https://do1ph.in/posts/</loc>
-    <lastmod>2022-02-14T04:53:20+09:00</lastmod>
-  </url><url>
     <loc>https://do1ph.in/tags/system/</loc>
-    <lastmod>2022-02-14T04:53:20+09:00</lastmod>
-  </url><url>
-    <loc>https://do1ph.in/tags/</loc>
     <lastmod>2022-02-14T04:53:20+09:00</lastmod>
   </url><url>
     <loc>https://do1ph.in/tags/ubuntu/</loc>

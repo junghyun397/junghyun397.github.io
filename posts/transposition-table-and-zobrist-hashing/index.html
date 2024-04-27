@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>단축키 페이지 | junghyun397 Blog</title>
-<meta name="keywords" content="" />
-<meta name="description" content="자주 사용하는 Vim/Bash/Sed 명령어들을 Mnemonic 과 함께 모았습니다.">
+<title>Transposition table과 Zobrist hashing | junghyun397 Blog</title>
+<meta name="keywords" content="game, algorithms, caching" />
+<meta name="description" content="틱택토로 알아보는 타뷸레이션 해싱(Tabulation Hashing)과 전치테이블(Transposition Table)">
 <meta name="author" content="junghyun397">
-<link rel="canonical" href="https://do1ph.in/keymap/" />
+<link rel="canonical" href="https://do1ph.in/posts/transposition-table-and-zobrist-hashing/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.48a0ed627ffef4d641edba8077c1b3230fd169809b7a2b830e3cf9336d0f812b.css" integrity="sha256-SKDtYn/&#43;9NZB7bqAd8GzIw/RaYCbeiuDDjz5M20PgSs=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
@@ -58,6 +58,11 @@
 
     </style>
 </noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -70,16 +75,16 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><meta property="og:title" content="단축키 페이지" />
-<meta property="og:description" content="자주 사용하는 Vim/Bash/Sed 명령어들을 Mnemonic 과 함께 모았습니다." />
+</script><meta property="og:title" content="Transposition table과 Zobrist hashing" />
+<meta property="og:description" content="틱택토로 알아보는 타뷸레이션 해싱(Tabulation Hashing)과 전치테이블(Transposition Table)" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://do1ph.in/keymap/" /><meta property="article:section" content="" />
-
-
+<meta property="og:url" content="https://do1ph.in/posts/transposition-table-and-zobrist-hashing/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-28T05:20:41&#43;09:00" />
+<meta property="article:modified_time" content="2022-11-28T05:20:41&#43;09:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="단축키 페이지"/>
-<meta name="twitter:description" content="자주 사용하는 Vim/Bash/Sed 명령어들을 Mnemonic 과 함께 모았습니다."/>
+<meta name="twitter:title" content="Transposition table과 Zobrist hashing"/>
+<meta name="twitter:description" content="틱택토로 알아보는 타뷸레이션 해싱(Tabulation Hashing)과 전치테이블(Transposition Table)"/>
 
 
 <script type="application/ld+json">
@@ -90,8 +95,14 @@ if (!doNotTrack) {
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "단축키 페이지",
-      "item": "https://do1ph.in/keymap/"
+      "name": "Posts",
+      "item": "https://do1ph.in/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Transposition table과 Zobrist hashing",
+      "item": "https://do1ph.in/posts/transposition-table-and-zobrist-hashing/"
     }
   ]
 }
@@ -100,24 +111,24 @@ if (!doNotTrack) {
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "단축키 페이지",
-  "name": "단축키 페이지",
-  "description": "자주 사용하는 Vim/Bash/Sed 명령어들을 Mnemonic 과 함께 모았습니다.",
+  "headline": "Transposition table과 Zobrist hashing",
+  "name": "Transposition table과 Zobrist hashing",
+  "description": "틱택토로 알아보는 타뷸레이션 해싱(Tabulation Hashing)과 전치테이블(Transposition Table)",
   "keywords": [
-    
+    "game", "algorithms", "caching"
   ],
-  "articleBody": "Sed Vim Operator d: Delete\ny: Yank\n%: whole\nNavigation Word w: forWard →\ne: End →\nb: Backward ←\nLine 0: same as Zero ←\n^: ^0 ←\n$: /some/path$ →\nScreen C-u: Up ↑\nC-d: Down ↓\ngg: Go top ↑\nG: Go Bottom ↓\nDocument N-G: ``G```o N line\ngi: Go Interaction\nEdit Insert a: Ahead → ^--\ni: Internal ← ^\no: Open ↓ ^↑\nc: Clear\nCommand x: same as Delete → ^←\np: Past ↓\nu: Undo ←\nC-r: Redo →\nClipboard yy: Yank line\ndd: Duplicate Delete line\np: Paste ↓ ^↑\nEtc C-o: Operation\nC-r: calculaorR\niw: In Word\naw: Around Word\nBash/ZSH  ^A %B ^B ^F %F ^E ------ | | | | | | $ cp monfichier dir/ ---- ^U ^W %D ^K C-a: Ahead \nC-e: End --\nC-f: Forward character -\nC-b: Backward character \nA-f: Forward word -\nA-b: Backward word \nC-k: Clear to end of line --\nC-u: Clear to beginning of line \n",
-  "wordCount" : "169",
+  "articleBody": "틱택토\n타뷸레이션 해싱 타뷸레이션 해싱(Tabulation hashing)\nXOR\n해싱\nZobrist 해싱 Zobrist 해싱(Zobrist hashing)\n해시키\n전치 테이블 전치 테이블(Transposition table)\n해시테이블\n해시 버킷 해시 버킷(Hash buckets)\n해시 테이블/해시 버킷\n교체 전략 교체 전략(Replacement strategies)\n얕은 개체 우선 교체\n전치 테이블과 타뷸레이션 해싱 성능 비교\n",
+  "wordCount" : "43",
   "inLanguage": "ko",
-  "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "0001-01-01T00:00:00Z",
+  "datePublished": "2022-11-28T05:20:41+09:00",
+  "dateModified": "2022-11-28T05:20:41+09:00",
   "author":{
     "@type": "Person",
     "name": "junghyun397"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://do1ph.in/keymap/"
+    "@id": "https://do1ph.in/posts/transposition-table-and-zobrist-hashing/"
   },
   "publisher": {
     "@type": "Organization",
@@ -200,12 +211,12 @@ if (!doNotTrack) {
   <header class="post-header">
     
     <h1 class="post-title">
-      단축키 페이지
+      Transposition table과 Zobrist hashing
     </h1>
     <div class="post-description">
-      자주 사용하는 Vim/Bash/Sed 명령어들을 Mnemonic 과 함께 모았습니다.
+      틱택토로 알아보는 타뷸레이션 해싱(Tabulation Hashing)과 전치테이블(Transposition Table)
     </div>
-    <div class="post-meta">junghyun397&nbsp;|&nbsp;<a href="https://github.com/junghyun397/blog/tree/master/content/keymap.md" rel="noopener noreferrer" target="_blank">뭔가 잘못된 것 같습니다.</a>
+    <div class="post-meta"><span title='2022-11-28 05:20:41 +0900 KST'>November 28, 2022</span>&nbsp;·&nbsp;junghyun397&nbsp;|&nbsp;<a href="https://github.com/junghyun397/blog/tree/master/content/posts/transposition-table-and-zobrist-hashing.md" rel="noopener noreferrer" target="_blank">뭔가 잘못된 것 같습니다.</a>
 
 </div>
   </header> <div class="toc">
@@ -216,108 +227,63 @@ if (!doNotTrack) {
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#sed" aria-label="Sed">Sed</a></li>
-                <li>
-                    <a href="#vim" aria-label="Vim">Vim</a><ul>
+                    <a href="#%ed%83%80%eb%b7%b8%eb%a0%88%ec%9d%b4%ec%85%98-%ed%95%b4%ec%8b%b1" aria-label="타뷸레이션 해싱">타뷸레이션 해싱</a><ul>
                         
                 <li>
-                    <a href="#operator" aria-label="Operator">Operator</a></li>
-                <li>
-                    <a href="#navigation" aria-label="Navigation">Navigation</a><ul>
-                        
-                <li>
-                    <a href="#word" aria-label="Word">Word</a></li>
-                <li>
-                    <a href="#line" aria-label="Line">Line</a></li>
-                <li>
-                    <a href="#screen" aria-label="Screen">Screen</a></li>
-                <li>
-                    <a href="#document" aria-label="Document">Document</a></li></ul>
+                    <a href="#zobrist-%ed%95%b4%ec%8b%b1" aria-label="Zobrist 해싱">Zobrist 해싱</a></li></ul>
                 </li>
                 <li>
-                    <a href="#edit" aria-label="Edit">Edit</a><ul>
+                    <a href="#%ec%a0%84%ec%b9%98-%ed%85%8c%ec%9d%b4%eb%b8%94" aria-label="전치 테이블">전치 테이블</a><ul>
                         
                 <li>
-                    <a href="#insert" aria-label="Insert">Insert</a></li>
+                    <a href="#%ed%95%b4%ec%8b%9c-%eb%b2%84%ed%82%b7" aria-label="해시 버킷">해시 버킷</a></li>
                 <li>
-                    <a href="#command" aria-label="Command">Command</a></li>
-                <li>
-                    <a href="#clipboard" aria-label="Clipboard">Clipboard</a></li>
-                <li>
-                    <a href="#etc" aria-label="Etc">Etc</a></li></ul>
-                </li></ul>
+                    <a href="#%ea%b5%90%ec%b2%b4-%ec%a0%84%eb%9e%b5" aria-label="교체 전략">교체 전략</a></li></ul>
                 </li>
                 <li>
-                    <a href="#bashzsh" aria-label="Bash/ZSH">Bash/ZSH</a>
+                    <a href="#%ec%a0%84%ec%b9%98-%ed%85%8c%ec%9d%b4%eb%b8%94%ea%b3%bc-%ed%83%80%eb%b7%b8%eb%a0%88%ec%9d%b4%ec%85%98-%ed%95%b4%ec%8b%b1" aria-label="전치 테이블과 타뷸레이션 해싱">전치 테이블과 타뷸레이션 해싱</a>
                 </li>
             </ul>
         </div>
     </details>
 </div>
 
-  <div class="post-content"><h1 id="sed">Sed<a hidden class="anchor" aria-hidden="true" href="#sed">#</a></h1>
-<h1 id="vim">Vim<a hidden class="anchor" aria-hidden="true" href="#vim">#</a></h1>
-<h2 id="operator">Operator<a hidden class="anchor" aria-hidden="true" href="#operator">#</a></h2>
-<p><code>d</code>: <code>D</code>elete</p>
-<p><code>y</code>: <code>Y</code>ank</p>
-<p><code>%</code>: whole</p>
-<h2 id="navigation">Navigation<a hidden class="anchor" aria-hidden="true" href="#navigation">#</a></h2>
-<h3 id="word">Word<a hidden class="anchor" aria-hidden="true" href="#word">#</a></h3>
-<p><code>w</code>: for<code>W</code>ard <code>→</code></p>
-<p><code>e</code>: <code>E</code>nd <code>→</code></p>
-<p><code>b</code>: <code>B</code>ackward <code>←</code></p>
-<h3 id="line">Line<a hidden class="anchor" aria-hidden="true" href="#line">#</a></h3>
-<p><code>0</code>: same as <code>Zero</code> <code>←</code></p>
-<p><code>^</code>: <code>^0</code> <code>←</code></p>
-<p><code>$</code>: /some/path<code>$</code> <code>→</code></p>
-<h3 id="screen">Screen<a hidden class="anchor" aria-hidden="true" href="#screen">#</a></h3>
-<p><code>C-u</code>: <code>U</code>p <code>↑</code></p>
-<p><code>C-d</code>: <code>D</code>own <code>↓</code></p>
-<p><code>gg</code>: <code>G</code>o top <code>↑</code></p>
-<p><code>G</code>: <code>G</code>o Bottom <code>↓</code></p>
-<h3 id="document">Document<a hidden class="anchor" aria-hidden="true" href="#document">#</a></h3>
-<p><code>N-G</code>: ``G```o N line</p>
-<p><code>gi</code>: <code>G</code>o <code>I</code>nteraction</p>
-<h2 id="edit">Edit<a hidden class="anchor" aria-hidden="true" href="#edit">#</a></h2>
-<h3 id="insert">Insert<a hidden class="anchor" aria-hidden="true" href="#insert">#</a></h3>
-<p><code>a</code>: <code>A</code>head <code>→</code> <code>^-&gt;-&gt;</code></p>
-<p><code>i</code>: <code>I</code>nternal <code>←</code> <code>^&lt;-&lt;-</code></p>
-<p><code>o</code>: <code>O</code>pen <code>↓</code> <code>^↑</code></p>
-<p><code>c</code>: <code>C</code>lear</p>
-<h3 id="command">Command<a hidden class="anchor" aria-hidden="true" href="#command">#</a></h3>
-<p><code>x</code>: same as <code>Delete</code> <code>→</code> <code>^←</code></p>
-<p><code>p</code>: <code>P</code>ast <code>↓</code></p>
-<p><code>u</code>: <code>U</code>ndo <code>←</code></p>
-<p><code>C-r</code>: <code>R</code>edo <code>→</code></p>
-<h3 id="clipboard">Clipboard<a hidden class="anchor" aria-hidden="true" href="#clipboard">#</a></h3>
-<p><code>yy</code>: <code>Y</code>ank line</p>
-<p><code>dd</code>: <code>D</code>uplicate <code>D</code>elete line</p>
-<p><code>p</code>: <code>P</code>aste <code>↓</code> <code>^↑</code></p>
-<h3 id="etc">Etc<a hidden class="anchor" aria-hidden="true" href="#etc">#</a></h3>
-<p><code>C-o</code>: <code>O</code>peration</p>
-<p><code>C-r</code>: calculaor<code>R</code></p>
-<p><code>iw</code>: <code>I</code>n <code>W</code>ord</p>
-<p><code>aw</code>: <code>A</code>round <code>W</code>ord</p>
-<h1 id="bashzsh">Bash/ZSH<a hidden class="anchor" aria-hidden="true" href="#bashzsh">#</a></h1>
-<pre tabindex="0"><code> ^A %B ^B ^F %F   ^E
-  &lt;--&lt;--&lt;--&gt;--&gt;----&gt;
-  |  |  |  |  |    |
-$ cp monfichier dir/
-  &lt;--&lt;--------&gt;----&gt;
- ^U ^W       %D   ^K
-</code></pre><p><code>C-a</code>: <code>A</code>head <code>&lt;-&lt;-</code></p>
-<p><code>C-e</code>: <code>E</code>nd <code>-&gt;-&gt;</code></p>
-<p><code>C-f</code>: <code>F</code>orward character <code>-&gt;</code></p>
-<p><code>C-b</code>: <code>B</code>ackward character <code>&lt;-</code></p>
-<p><code>A-f</code>: <code>F</code>orward word <code>-&gt;</code></p>
-<p><code>A-b</code>: <code>B</code>ackward word <code>&lt;-</code></p>
-<p><code>C-k</code>: Clear to end of line <code>-&gt;-&gt;</code></p>
-<p><code>C-u</code>: Clear to beginning of line <code>&lt;-&lt;-</code></p>
+  <div class="post-content"><p>틱택토</p>
+<h2 id="타뷸레이션-해싱">타뷸레이션 해싱<a hidden class="anchor" aria-hidden="true" href="#타뷸레이션-해싱">#</a></h2>
+<p>타뷸레이션 해싱(Tabulation hashing)</p>
+<p>XOR</p>
+<p>해싱</p>
+<h3 id="zobrist-해싱">Zobrist 해싱<a hidden class="anchor" aria-hidden="true" href="#zobrist-해싱">#</a></h3>
+<p>Zobrist 해싱(Zobrist hashing)</p>
+<p>해시키</p>
+<h2 id="전치-테이블">전치 테이블<a hidden class="anchor" aria-hidden="true" href="#전치-테이블">#</a></h2>
+<p>전치 테이블(Transposition table)</p>
+<p>해시테이블</p>
+<h3 id="해시-버킷">해시 버킷<a hidden class="anchor" aria-hidden="true" href="#해시-버킷">#</a></h3>
+<p>해시 버킷(Hash buckets)</p>
+<p>해시 테이블/해시 버킷</p>
+<h3 id="교체-전략">교체 전략<a hidden class="anchor" aria-hidden="true" href="#교체-전략">#</a></h3>
+<p>교체 전략(Replacement strategies)</p>
+<p>얕은 개체 우선 교체</p>
+<h2 id="전치-테이블과-타뷸레이션-해싱">전치 테이블과 타뷸레이션 해싱<a hidden class="anchor" aria-hidden="true" href="#전치-테이블과-타뷸레이션-해싱">#</a></h2>
+<p>성능 비교</p>
 
 
   </div>
 
   <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://do1ph.in/tags/game/">game</a></li>
+      <li><a href="https://do1ph.in/tags/algorithms/">algorithms</a></li>
+      <li><a href="https://do1ph.in/tags/caching/">caching</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://do1ph.in/posts/ubuntu-immediately-wakes/">
+    <span class="title">다음 페이지 »</span>
+    <br>
+    <span>Ubuntu 절전(Suspend)모드 풀림 해결 방법</span>
+  </a>
+</nav>
 
   </footer><script src="https://utteranc.es/client.js"
         repo="junghyun397/blog"
